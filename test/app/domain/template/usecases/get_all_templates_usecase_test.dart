@@ -9,25 +9,42 @@ import 'package:dartz/dartz.dart';
 class MockTemplateRepository extends Mock implements TemplateRepository {}
 
 void main() {
-  MockTemplateRepository repository;
-  GetAllTemplateUseCase usecase;
+  MockTemplateRepository _repository;
+  GetAllTemplateUseCase _usecase;
 
   final List<Template> tTemplate = [
     Template(url: "url", name: "teste", mass: "70.0", height: "175")
   ];
 
+  final tException = Exception();
+
   setUp(() {
-    repository = MockTemplateRepository();
-    usecase = GetAllTemplateUseCase(repository);
+    _repository = MockTemplateRepository();
+    _usecase = GetAllTemplateUseCase(_repository);
   });
-  test('should get template from the repository', () async {
-    // arrange
-    when(repository.getAll()).thenAnswer((_) async => Right(tTemplate));
-    //actual
-    final result = await usecase(NoParams());
-    //assert
-    expect(result, Right(tTemplate));
-    verify(repository.getAll()).called(1);
-    verifyNoMoreInteractions(repository);
+
+  group('test Usecase template', () {
+    test('should get template from the repository', () async {
+      // arrange
+      when(_repository.getAll()).thenAnswer((_) async => Right(tTemplate));
+      //actual
+      final result = await _usecase(NoParams());
+      //assert
+      expect(result, Right(tTemplate));
+      verify(_repository.getAll()).called(1);
+      verifyNoMoreInteractions(_repository);
+    });
+
+    test('should be get Exception from the repository', () async {
+      // arrange
+      when(_repository.getAll()).thenAnswer((_) async => Left(tException));
+      // actual
+      final result = await _usecase(NoParams());
+      // assert
+      expect(result, isA<Left>());
+      expect(result, Left(tException));
+      verify(_repository.getAll()).called(1);
+      verifyNoMoreInteractions(_repository);
+    });
   });
 }
