@@ -10,7 +10,7 @@ class TemplateRepositoryImpl implements TemplateRepository {
   }
 
   @override
-  Future<Either<Exception, Template>> getOne(int id) {
+  Future<Either<Exception, Template>> getOne(String url) {
     // TODO: implement getOne
     throw UnimplementedError();
   }

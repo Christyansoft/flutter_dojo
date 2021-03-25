@@ -18,7 +18,7 @@ void main() {
     height: "175",
   );
 
-  final tId = 1;
+  final tId = 'https://www.teste.com/1';
   final tException = Exception();
 
   setUp(() {
@@ -36,7 +36,7 @@ void main() {
       );
 
       //execute
-      final result = await _usecase(Params(id: tId));
+      final result = await _usecase(tId);
 
       //assert
       expect(result, Right(tTemplate));
@@ -48,7 +48,7 @@ void main() {
       // prepare
       when(_repository.getOne(any)).thenAnswer((_) async => Left(tException));
       // execute
-      final result = await _usecase(Params(id: tId));
+      final result = await _usecase(tId);
       // assert
     });
   });

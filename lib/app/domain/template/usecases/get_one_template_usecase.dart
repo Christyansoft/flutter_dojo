@@ -6,14 +6,14 @@ import 'package:flutter_dojo/app/domain/template/repositories/template_repositor
 import 'package:flutter_dojo/common/usecase/usecase.dart';
 
 class GetOneTemplateUseCase
-    implements UseCase<Either<Exception, Template>, Params> {
+    implements UseCase<Either<Exception, Template>, String> {
   final TemplateRepository _repository;
 
   GetOneTemplateUseCase(this._repository);
 
   @override
-  Future<Either<Exception, Template>> call(Params params) {
-    return _repository.getOne(params.id);
+  Future<Either<Exception, Template>> call(String url) {
+    return _repository.getOne(url);
   }
 }
 
