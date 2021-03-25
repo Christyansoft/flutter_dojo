@@ -50,6 +50,10 @@ void main() {
       // execute
       final result = await _usecase(tId);
       // assert
+      expect(result, isA<Left>());
+      expect(result, Left(tException));
+      verify(_repository.getOne(tId)).called(1);
+      verifyNoMoreInteractions(_repository);
     });
   });
 }
