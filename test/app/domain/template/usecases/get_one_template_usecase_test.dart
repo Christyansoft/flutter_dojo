@@ -1,11 +1,9 @@
+import 'package:dartz/dartz.dart';
 import 'package:flutter_dojo/app/domain/template/entities/template.dart';
 import 'package:flutter_dojo/app/domain/template/repositories/template_repository.dart';
-import 'package:flutter_dojo/app/domain/template/usecases/get_all_templates_usecase.dart';
 import 'package:flutter_dojo/app/domain/template/usecases/get_one_template_usecase.dart';
-import 'package:flutter_dojo/common/usecase/usecase.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:dartz/dartz.dart';
 
 class MockTemplateRepository extends Mock implements TemplateRepository {}
 
@@ -20,6 +18,7 @@ void main() {
     height: "175",
   );
 
+  final tId = 1;
   final tException = Exception();
 
   setUp(() {
@@ -29,26 +28,28 @@ void main() {
 
   group('test Usecase template', () {
     test('should get template from the repository', () async {
+      //prepare
       when(
         _repository.getOne(any),
       ).thenAnswer(
         (_) async => Right(tTemplate),
       );
 
-      final result = await _usecase(any);
+      //execute
+      final result = await _usecase(Params(id: tId));
 
+      //assert
       expect(result, Right(tTemplate));
-      verify(_repository.getAll()).called(1);
+      verify(_repository.getOne(tId)).called(1);
       verifyNoMoreInteractions(_repository);
+    });
 
-      // // arrange
-      // when(_repository.getAll()).thenAnswer((_) async => Right(tTemplate));
-      // //actual
-      // final result = await _usecase(NoParams());
-      // //assert
-      // expect(result, Right(tTemplate));
-      // verify(_repository.getAll()).called(1);
-      // verifyNoMoreInteractions(_repository);
+    test("should return a Exception when call repository as error", () async {
+      // prepare
+      when(_repository.getOne(any)).thenAnswer((_) async => Left(tException));
+      // execute
+      final result = await _usecase(Params(id: tId));
+      // assert
     });
   });
 }
