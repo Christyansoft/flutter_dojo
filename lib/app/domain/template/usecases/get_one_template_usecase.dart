@@ -13,12 +13,16 @@ class GetOneTemplateUseCase
 
   @override
   Future<Either<Exception, Template>> call(Params params) {
+    
+    // if (params == null) {
+    //   return Left<>;
+    // }
     return _repository.getOne(params.id);
   }
 }
 
 class Params extends Equatable {
-  final id;
+  final int id;
 
   Params({@required this.id});
   List<Object> get props => [id];
