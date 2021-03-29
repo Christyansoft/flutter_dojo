@@ -9,12 +9,9 @@ import 'package:mockito/mockito.dart';
 
 class MockTemplateRepository extends Mock implements TemplateRepository {}
 
-class MockFailure extends Mock implements Failure {}
-
 void main() {
   MockTemplateRepository _repository;
   GetOneTemplateUseCase _usecase;
-  MockFailure _mockFailure;
 
   final Template tTemplate = Template(
     url: "url",
@@ -28,7 +25,6 @@ void main() {
   setUp(() {
     _repository = MockTemplateRepository();
     _usecase = GetOneTemplateUseCase(_repository);
-    _mockFailure = MockFailure();
   });
 
   group('test Usecase template', () {
@@ -51,12 +47,13 @@ void main() {
 
     test("should return a Exception when call repository as Failure", () async {
       // prepare
-      when(_repository.getOne(any)).thenAnswer((_) async => Left(_mockFailure));
+      when(_repository.getOne(any))
+          .thenAnswer((_) async => Left(GetOneTemplateError()));
       // execute
       final result = await _usecase(tId);
       // assert
-      expect(result, isA<Left>());
-      expect(result.fold(id,id), isA<Failure>());
+      expect(result.fold(id, id), isA<Failure>());
+      expect(result, Left(GetOneTemplateError()));
       verify(_repository.getOne(tId)).called(1);
       verifyNoMoreInteractions(_repository);
     });
