@@ -10,7 +10,7 @@ class TemplateDataSourceApi implements TemplateDataSource {
   }
 
   @override
-  Future<Either<Exception, TemplateEntity>> getOne(int id) {
+  Future<Either<Exception, TemplateEntity>> getOne(String id) {
     // TODO: implement getOne
     throw UnimplementedError();
   }
