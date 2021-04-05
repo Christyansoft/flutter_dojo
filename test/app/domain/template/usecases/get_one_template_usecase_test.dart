@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter_dojo/app/domain/template/entities/template.dart';
+import 'package:flutter_dojo/app/domain/template/entities/template_entity.dart';
 import 'package:flutter_dojo/app/domain/template/repositories/template_repository.dart';
 import 'package:flutter_dojo/app/domain/template/usecases/get_one_template_usecase.dart';
 import 'package:flutter_dojo/app/errors/template/template_errors.dart';
@@ -13,7 +13,7 @@ void main() {
   MockTemplateRepository _repository;
   GetOneTemplateUseCase _usecase;
 
-  final Template tTemplate = Template(
+  final TemplateEntity tTemplate = TemplateEntity(
     url: "url",
     name: "teste",
     mass: "70.0",

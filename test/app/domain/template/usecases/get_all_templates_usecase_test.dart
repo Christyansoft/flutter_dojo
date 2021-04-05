@@ -1,4 +1,4 @@
-import 'package:flutter_dojo/app/domain/template/entities/template.dart';
+import 'package:flutter_dojo/app/domain/template/entities/template_entity.dart';
 import 'package:flutter_dojo/app/domain/template/repositories/template_repository.dart';
 import 'package:flutter_dojo/app/domain/template/usecases/get_all_templates_usecase.dart';
 import 'package:flutter_dojo/app/errors/template/template_errors.dart';
@@ -13,8 +13,8 @@ void main() {
   MockTemplateRepository _repository;
   GetAllTemplateUseCase _usecase;
 
-  final List<Template> tTemplate = [
-    Template(url: "url", name: "teste", mass: "70.0", height: "175")
+  final List<TemplateEntity> tTemplate = [
+    TemplateEntity(url: "url", name: "teste", mass: "70.0", height: "175")
   ];
 
   setUp(() {
