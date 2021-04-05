@@ -9,7 +9,7 @@ class TemplateModel {
   final String mass;
   final String height;
 
-  TemplateModel(this.url, this.name, this.mass, this.height);
+  TemplateModel({this.url, this.name, this.mass, this.height});
 
   Map<String, dynamic> toMap() {
     return {
@@ -22,14 +22,15 @@ class TemplateModel {
 
   factory TemplateModel.fromMap(Map<String, dynamic> map) {
     return TemplateModel(
-      map['url'],
-      map['name'],
-      map['mass'],
-      map['height'],
+      url: map['url'],
+      name: map['name'],
+      mass: map['mass'],
+      height: map['height'],
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory TemplateModel.fromJson(String source) => TemplateModel.fromMap(json.decode(source));
+  factory TemplateModel.fromJson(String source) =>
+      TemplateModel.fromMap(json.decode(source));
 }

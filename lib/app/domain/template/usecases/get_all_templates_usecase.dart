@@ -11,6 +11,14 @@ class GetAllTemplateUseCase
 
   @override
   Future<Either<Failure, List<TemplateEntity>>> call(NoParams params) async {
-    return await _repository.getAll();
+    // var f = await _repository.getAll();
+    // TemplateEntity result = null;
+    // f.fold((l) => null, (r) => result = TemplateEntity(
+    //   height: r.
+    // ));
+
+    // return await _repository.getAll();
+    //
+    return Right(<TemplateEntity>[]);
   }
 }

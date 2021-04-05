@@ -14,7 +14,10 @@ class GetOneTemplateUseCase
 
   @override
   Future<Either<Failure, TemplateEntity>> call(String url) {
-    return _repository.getOne(url);
+    //return _repository.getOne(url);
+    //
+    TemplateEntity result;
+    return Right(result);
   }
 }
 
