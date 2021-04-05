@@ -22,7 +22,7 @@ void main() {
 
   setUp(() {
     _datasource = MockTemplateDatasource();
-    _repository = TemplateRepositoryImpl();
+    _repository = TemplateRepositoryImpl(_datasource);
   });
 
   group('test repository template', () {

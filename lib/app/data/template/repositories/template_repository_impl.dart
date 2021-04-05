@@ -5,7 +5,6 @@ import 'package:flutter_dojo/app/domain/template/repositories/template_repositor
 import 'package:flutter_dojo/common/errors/failure.dart';
 
 class TemplateRepositoryImpl implements TemplateRepository {
-
   final TemplateDataSource _dataSource;
 
   TemplateRepositoryImpl(this._dataSource);
@@ -17,7 +16,6 @@ class TemplateRepositoryImpl implements TemplateRepository {
 
   @override
   Future<Either<Failure, TemplateEntity>> getOne(String url) {
-    // TODO: implement getOne
-    throw UnimplementedError();
+    return _dataSource.getOne(url);
   }
 }
