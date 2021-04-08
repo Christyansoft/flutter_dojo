@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_dojo/app/data/template/datasources/template_datasource.dart';
 import 'package:flutter_dojo/app/data/template/models/template_model.dart';
 import 'package:flutter_dojo/app/data/template/repositories/template_repository_impl.dart';
+import 'package:flutter_dojo/common/errors/failure.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
@@ -45,20 +46,18 @@ void main() {
 
   group('test repository get all', () {
     test('''
-      Given a Url
-      When successful
-      Then return Right(result)
+      Call repository getAll
+      When DioError
+      Then return Left(DioFailure)
     ''', () async {
-
       //prepare
+      // Response response = Response();
       when(_datasource.getAll()).thenThrow(DioError());
       // execute
       final result = await _repository.getAll();
       // assert
-      expect(result, isA<Left>());
+      expect(result.fold(id, id), isA<DioFailure>());
       verify(_repository.getAll()).called(1);
     });
   });
-
-
 }

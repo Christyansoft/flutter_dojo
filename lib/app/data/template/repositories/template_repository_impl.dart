@@ -20,14 +20,12 @@ class TemplateRepositoryImpl implements TemplateRepository {
       }
       return Right(result);
     } on DioError catch (error) {
-      return Left(DioFailure(
-          message: error.message, statusCode: error.response.statusCode));
+      return Left(DioFailure(message: error.message, statusCode: error.response?.statusCode ?? 400));
     } catch (error) {
       return Left(GetAllTemplateError(message: 'Datasource error not found'));
     }
   }
 
   @override
-  Future<Either<Failure, TemplateEntity>> getOne(String url) async =>
-      Right(await _dataSource.getOne(url));
+  Future<Either<Failure, TemplateEntity>> getOne(String url) async => Right(await _dataSource.getOne(url));
 }
