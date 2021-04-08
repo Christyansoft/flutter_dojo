@@ -50,7 +50,7 @@ void main() {
       // prepare
       var tId = 'https://www.teste.com/1';
       //prepare
-      when(_datasource.getOne(any)).thenThrow((_) async => DioError());
+      when(_datasource.getOne(any)).thenThrow(DioError());
       // execute
       final result = await _repository.getOne(tId);
       // assert
