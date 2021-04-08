@@ -17,7 +17,7 @@ void main() {
     _repository = TemplateRepositoryImpl(_datasource);
   });
 
-  group('test repository template', () {
+  group('test repository get one', () {
     test('''
       Given a Url
       When successful
@@ -41,21 +41,24 @@ void main() {
       expect(result, isA<Right>());
       verify(_datasource.getOne(tId)).called(1);
     });
+  });
 
+  group('test repository get all', () {
     test('''
       Given a Url
       When successful
       Then return Right(result)
     ''', () async {
-      // prepare
-      var tId = 'https://www.teste.com/1';
+
       //prepare
-      when(_datasource.getOne(any)).thenThrow(DioError());
+      when(_datasource.getAll()).thenThrow(DioError());
       // execute
-      final result = await _repository.getOne(tId);
+      final result = await _repository.getAll();
       // assert
       expect(result, isA<Left>());
-      verify(_repository.getOne(tId)).called(1);
+      verify(_repository.getAll()).called(1);
     });
   });
+
+
 }
