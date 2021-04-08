@@ -13,17 +13,14 @@ class GetOneTemplateUseCase
   GetOneTemplateUseCase(this._repository);
 
   @override
-  Future<Either<Failure, TemplateEntity>> call(String url) {
-    //return _repository.getOne(url);
-    //
-    TemplateEntity result;
-    return Right(result);
-  }
+  Future<Either<Failure, TemplateEntity>> call(String url) =>
+      _repository.getOne(url);
 }
 
 class Params extends Equatable {
   final int id;
 
   Params({@required this.id});
+
   List<Object> get props => [id];
 }

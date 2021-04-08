@@ -2,9 +2,8 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_dojo/app/data/template/datasources/template_datasource.dart';
 import 'package:flutter_dojo/app/data/template/models/template_model.dart';
 import 'package:flutter_dojo/app/data/template/repositories/template_repository_impl.dart';
-import 'package:flutter_dojo/app/domain/template/entities/template_entity.dart';
-import 'package:mockito/mockito.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mockito/mockito.dart';
 
 class MockTemplateDatasource extends Mock implements TemplateDataSource {}
 
@@ -32,7 +31,7 @@ void main() {
 
       var tId = 'https://www.teste.com/1';
       //prepare
-      when(_datasource.getOne(any)).thenAnswer((_) async => Right(tTemplate));
+      when(_datasource.getOne(any)).thenAnswer((_) async => tTemplate);
 
       //execute
       final result = await _repository.getOne(tId);
@@ -40,7 +39,6 @@ void main() {
       //assert
       expect(result, isA<Right>());
       verify(_datasource.getOne(tId)).called(1);
-      verifyNoMoreInteractions(_datasource);
     });
 
     // test("should return a Exception when call repository as Failure", () async {

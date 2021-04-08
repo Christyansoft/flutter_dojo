@@ -6,13 +6,13 @@ import 'package:flutter_dojo/common/errors/failure.dart';
 
 class TemplateDataSourceApi implements TemplateDataSource {
   @override
-  Future<Either<Failure, List<TemplateModel>>> getAll() {
+  Future<List<TemplateModel>> getAll() {
     // TODO: implement getAll
     throw UnimplementedError();
   }
 
   @override
-  Future<Either<Failure, TemplateModel>> getOne(String id) {
+  Future<TemplateModel> getOne(String id) {
     // TODO: implement getOne
     throw UnimplementedError();
   }

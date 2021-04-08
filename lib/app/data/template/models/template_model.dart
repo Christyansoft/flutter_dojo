@@ -3,13 +3,16 @@
 
 import 'dart:convert';
 
-class TemplateModel {
-  final String url;
-  final String name;
-  final String mass;
-  final String height;
+import 'package:flutter/cupertino.dart';
+import 'package:flutter_dojo/app/domain/template/entities/template_entity.dart';
 
-  TemplateModel({this.url, this.name, this.mass, this.height});
+class TemplateModel extends TemplateEntity {
+  TemplateModel(
+      {@required String height,
+      @required String url,
+      @required String mass,
+      @required String name})
+      : super(height: height, url: url, mass: mass, name: name);
 
   Map<String, dynamic> toMap() {
     return {
