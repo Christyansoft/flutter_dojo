@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter_dojo/app/data/template/datasources/template_datasource.dart';
 import 'package:flutter_dojo/app/data/template/models/template_model.dart';
 import 'package:flutter_dojo/app/data/template/repositories/template_repository_impl.dart';
@@ -41,17 +42,20 @@ void main() {
       verify(_datasource.getOne(tId)).called(1);
     });
 
-    // test("should return a Exception when call repository as Failure", () async {
-    //   // prepare
-    //   when(_repository.getOne(any))
-    //       .thenAnswer((_) async => Left(GetOneTemplateError()));
-    //   // execute
-    //   final result = await _usecase(tId);
-    //   // assert
-    //   expect(result.fold(id, id), isA<Failure>());
-    //   expect(result, Left(GetOneTemplateError()));
-    //   verify(_repository.getOne(tId)).called(1);
-    //   verifyNoMoreInteractions(_repository);
-    // });
+    test('''
+      Given a Url
+      When successful
+      Then return Right(result)
+    ''', () async {
+      // prepare
+      var tId = 'https://www.teste.com/1';
+      //prepare
+      when(_datasource.getOne(any)).thenThrow((_) async => DioError());
+      // execute
+      final result = await _repository.getOne(tId);
+      // assert
+      expect(result, isA<Left>());
+      verify(_repository.getOne(tId)).called(1);
+    });
   });
 }

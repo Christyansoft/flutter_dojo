@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter_dojo/app/data/template/datasources/template_datasource.dart';
 import 'package:flutter_dojo/app/domain/template/entities/template_entity.dart';
 import 'package:flutter_dojo/app/domain/template/repositories/template_repository.dart';
@@ -18,11 +19,15 @@ class TemplateRepositoryImpl implements TemplateRepository {
         return Left(GetAllTemplateError(message: 'Data is null of datasource'));
       }
       return Right(result);
+    } on DioError catch (error) {
+      return Left(DioFailure(
+          message: error.message, statusCode: error.response.statusCode));
     } catch (error) {
-       return Left(GetAllTemplateError(message: 'Datasource error not found'));
+      return Left(GetAllTemplateError(message: 'Datasource error not found'));
     }
   }
 
   @override
-  Future<Either<Failure, TemplateEntity>> getOne(String url) async => Right(await _dataSource.getOne(url));
+  Future<Either<Failure, TemplateEntity>> getOne(String url) async =>
+      Right(await _dataSource.getOne(url));
 }
