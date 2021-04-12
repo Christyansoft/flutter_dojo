@@ -1,20 +1,20 @@
-import 'package:flutter_dojo/app/domain/template/entities/template_entity.dart';
-import 'package:flutter_dojo/app/domain/template/repositories/template_repository.dart';
-import 'package:flutter_dojo/app/domain/template/usecases/get_all_templates_usecase.dart';
+import 'package:dartz/dartz.dart';
+import 'package:flutter_dojo/app/domain/template/entities/people_entity.dart';
+import 'package:flutter_dojo/app/domain/template/repositories/people_repository.dart';
+import 'package:flutter_dojo/app/domain/template/usecases/get_all_people_usecase.dart';
 import 'package:flutter_dojo/app/errors/template/template_errors.dart';
 import 'package:flutter_dojo/common/usecase/usecase.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:dartz/dartz.dart';
 
-class MockTemplateRepository extends Mock implements TemplateRepository {}
+class MockTemplateRepository extends Mock implements PeopleRepository {}
 
 void main() {
   MockTemplateRepository _repository;
   GetAllTemplateUseCase _usecase;
 
-  final List<TemplateEntity> tTemplate = [
-    TemplateEntity(url: "url", name: "teste", mass: "70.0", height: "175")
+  final List<PeopleEntity> tTemplate = [
+    PeopleEntity(url: "url", name: "teste", mass: "70.0", height: "175")
   ];
 
   setUp(() {

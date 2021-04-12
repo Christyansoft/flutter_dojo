@@ -1,24 +1,27 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter_dojo/app/data/template/datasources/template_datasource.dart';
-import 'package:flutter_dojo/app/data/template/models/template_model.dart';
-import 'package:flutter_dojo/app/data/template/repositories/template_repository_impl.dart';
-import 'package:flutter_dojo/app/domain/template/entities/template_entity.dart';
+import 'package:flutter_dojo/app/data/template/datasources/people_datasource.dart';
+import 'package:flutter_dojo/app/data/template/models/people_model.dart';
+import 'package:flutter_dojo/app/data/template/repositories/people_repository_impl.dart';
+import 'package:flutter_dojo/app/domain/template/entities/people_entity.dart';
 import 'package:flutter_dojo/common/errors/failure.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
-class MockTemplateDatasource extends Mock implements TemplateDataSource {}
+class MockTemplateDatasource extends Mock implements PeopleDataSource {}
 
 void main() {
   MockTemplateDatasource _datasource;
-  TemplateRepositoryImpl _repository;
+  PeopleRepositoryImpl _repository;
 
-  final tTemplatemodel = TemplateModel(height: '150', mass: '40', name: 'Teste Flutter', url: 'www.url/id/10');
+  final tTemplatemodel = PeopleModel(
+      height: '150', mass: '40', name: 'Teste Flutter', url: 'www.url/id/10');
+
+  PeopleEntity tTemplateEntity = tTemplatemodel;
 
   setUp(() {
     _datasource = MockTemplateDatasource();
-    _repository = TemplateRepositoryImpl(_datasource);
+    _repository = PeopleRepositoryImpl(_datasource);
   });
 
   // group('test repository get one', () {
@@ -68,12 +71,11 @@ void main() {
       Then return Right(TemplateEntity)
     ''', () async {
       //prepare
-      // Response response = Response();
       when(_datasource.getAll()).thenAnswer((_) async => [tTemplatemodel]);
       // execute
       final result = await _repository.getAll();
       // assert
-      expect( result | null, isA<TemplateEntity>());
+      expect(result | null, isA<List<PeopleEntity>>());
       verify(_datasource.getAll()).called(1);
       verifyNoMoreInteractions(_datasource);
     });

@@ -4,10 +4,10 @@
 import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_dojo/app/domain/template/entities/template_entity.dart';
+import 'package:flutter_dojo/app/domain/template/entities/people_entity.dart';
 
-class TemplateModel extends TemplateEntity {
-  TemplateModel(
+class PeopleModel extends PeopleEntity {
+  PeopleModel(
       {@required String height,
       @required String url,
       @required String mass,
@@ -23,8 +23,8 @@ class TemplateModel extends TemplateEntity {
     };
   }
 
-  factory TemplateModel.fromMap(Map<String, dynamic> map) {
-    return TemplateModel(
+  factory PeopleModel.fromMap(Map<String, dynamic> map) {
+    return PeopleModel(
       url: map['url'],
       name: map['name'],
       mass: map['mass'],
@@ -34,6 +34,6 @@ class TemplateModel extends TemplateEntity {
 
   String toJson() => json.encode(toMap());
 
-  factory TemplateModel.fromJson(String source) =>
-      TemplateModel.fromMap(json.decode(source));
+  factory PeopleModel.fromJson(String source) =>
+      PeopleModel.fromMap(json.decode(source));
 }
