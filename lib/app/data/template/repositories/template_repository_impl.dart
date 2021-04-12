@@ -18,6 +18,7 @@ class TemplateRepositoryImpl implements TemplateRepository {
       if (result == null) {
         return Left(GetAllTemplateError(message: 'Data is null of datasource'));
       }
+      
       return Right(result);
     } on DioError catch (error) {
       return Left(DioFailure(message: error.message, statusCode: error.response?.statusCode ?? 400));
