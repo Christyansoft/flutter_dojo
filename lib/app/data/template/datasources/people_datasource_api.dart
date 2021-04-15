@@ -11,9 +11,7 @@ class PeopleDataSourceApi implements PeopleDataSource {
   Future<List<PeopleModel>> getAll() async {
     final response = await _client.get('/people');
     if (response.statusCode == 200) {
-      final result = (response.data["results"] as List)
-          .map((e) => PeopleModel.fromJson(e))
-          .toList();
+      final result = (response.data["results"] as List).map((e) => PeopleModel.fromMap(e)).toList();
       return result;
     } else {
       throw DioFailure(
