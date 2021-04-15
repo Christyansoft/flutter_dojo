@@ -4,6 +4,7 @@ import 'package:flutter_dojo/app/data/template/datasources/people_datasource.dar
 import 'package:flutter_dojo/app/data/template/models/people_model.dart';
 import 'package:flutter_dojo/app/data/template/repositories/people_repository_impl.dart';
 import 'package:flutter_dojo/app/domain/template/entities/people_entity.dart';
+import 'package:flutter_dojo/app/errors/template/template_errors.dart';
 import 'package:flutter_dojo/common/errors/failure.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
@@ -67,6 +68,21 @@ void main() {
     });
     test('''
       Call repository getAll
+      When DioError
+      Then return Left(GetAllTemplateError);
+)
+    ''', () async {
+      //prepare
+      // Response response = Response();
+      when(_datasource.getAll()).thenAnswer((_) async => null);
+      // execute
+      final result = await _repository.getAll();
+      // assert
+      expect(result.fold(id, id), isA<GetAllTemplateError>());
+      verify(_repository.getAll()).called(1);
+    });
+    test('''
+      Call repository getAll
       When TemplateEntity
       Then return Right(TemplateEntity)
     ''', () async {
@@ -79,5 +95,6 @@ void main() {
       verify(_datasource.getAll()).called(1);
       verifyNoMoreInteractions(_datasource);
     });
+   
   });
 }
