@@ -19,14 +19,16 @@ void main() {
     datasource = PeopleDataSourceApi(dioMock);
   });
 
-  final peopleList = (json.decode(responseAll)['results'])
-      .map((e) => PeopleModel.fromJson(e))
+  final peopleResults = json.decode(responseAll)['results'] as List;
+
+  final peopleList = peopleResults.map((e) => PeopleModel.fromMap(e))
       .toList();
 
   test('should return a PeopleModel from API', () async {
     //arrange
     when(dioMock.get(any))
         .thenAnswer((_) async => Response(data: responseAll, statusCode: 200));
+
     //act
     final result = await datasource.getAll();
     //assert
