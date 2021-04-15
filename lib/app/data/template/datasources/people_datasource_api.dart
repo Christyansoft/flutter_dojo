@@ -1,7 +1,7 @@
-import 'package:dio/dio.dart';
 import 'package:dio/native_imp.dart';
 import 'package:flutter_dojo/app/data/template/datasources/people_datasource.dart';
 import 'package:flutter_dojo/app/data/template/models/people_model.dart';
+import 'package:flutter_dojo/common/errors/failure.dart';
 
 class PeopleDataSourceApi implements PeopleDataSource {
   final DioForNative _client;
@@ -15,10 +15,12 @@ class PeopleDataSourceApi implements PeopleDataSource {
           .map((e) => PeopleModel.fromJson(e))
           .toList();
       return result;
-    }else{
-      // throw
+    } else {
+      throw DioFailure(
+        message: response.statusMessage,
+        statusCode: response.statusCode,
+      );
     }
-    
   }
 
   @override

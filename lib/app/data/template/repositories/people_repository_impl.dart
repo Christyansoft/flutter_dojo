@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter_dojo/app/data/template/datasources/people_datasource.dart';
 import 'package:flutter_dojo/app/domain/template/entities/people_entity.dart';
 import 'package:flutter_dojo/app/domain/template/repositories/people_repository.dart';
@@ -19,10 +18,8 @@ class PeopleRepositoryImpl implements PeopleRepository {
         return Left(GetAllTemplateError(message: 'Data is null of datasource'));
       }
       return Right(result);
-    } on DioError catch (error) {
-      return Left(DioFailure(
-          message: error.message,
-          statusCode: error.response?.statusCode ?? 400));
+    } on Failure catch (error) {
+      return Left(error);
     } catch (error) {
       return Left(GetAllTemplateError(message: 'Datasource error not found'));
     }
