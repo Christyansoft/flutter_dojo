@@ -16,7 +16,7 @@ Future<void> configureInjection() async {
         baseUrl: 'https://swapi.dev/api/',
       )));
 
-  getIt.registerLazySingleton<GetAllPeopleUseCase>(() => GetAllTemplateUseCaseImpl(getIt()));
+  getIt.registerLazySingleton<GetAllPeopleUseCase>(() => GetAllPeopleUseCaseImpl(getIt()));
 
   getIt.registerLazySingleton<PeopleRepository>(() => PeopleRepositoryImpl(getIt()));
 
