@@ -7,17 +7,31 @@ class PeopleDataSourceApi implements PeopleDataSource {
   final DioForNative _client;
 
   PeopleDataSourceApi(this._client);
+
   @override
   Future<List<PeopleModel>> getAll() async {
     final response = await _client.get('/people');
-    if (response.statusCode == 200) {
-      final result = (response.data["results"] as List).map((e) => PeopleModel.fromMap(e)).toList();
-      return result;
-    } else {
-      throw DioFailure(
-        message: response.statusMessage,
-        statusCode: response.statusCode,
-      );
+    try {
+      if (response.statusCode == 200) {
+        final result = (response.data["results"] as List)
+            .map((e) => PeopleModel.fromMap(e))
+            .toList();
+        return result;
+      }
+      if (response.statusCode == 200) {
+        final result = (response.data["results"] as List)
+            .map((e) => PeopleModel.fromMap(e))
+            .toList();
+        return result;
+      } else {
+        throw DioFailure(
+          message: response.statusMessage,
+          statusCode: response.statusCode,
+        );
+      }
+    } catch (e) {
+      print(e);
+      return null;
     }
   }
 
