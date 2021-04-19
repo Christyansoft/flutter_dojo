@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dojo/common/injected/module.dart';
 
 // TODO: implementar exibição do template list na home
-void main() {
+Future<void> main() async {
+   await configureInjection();
   runApp(MyApp());
 }
 

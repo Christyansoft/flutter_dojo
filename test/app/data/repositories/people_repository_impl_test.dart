@@ -55,20 +55,6 @@ void main() {
     test('''
       Call repository getAll
       When DioError
-      Then return Left(DioFailure)
-    ''', () async {
-      //prepare
-      // Response response = Response();
-      when(_datasource.getAll()).thenThrow(DioError());
-      // execute
-      final result = await _repository.getAll();
-      // assert
-      expect(result.fold(id, id), isA<DioFailure>());
-      verify(_repository.getAll()).called(1);
-    });
-    test('''
-      Call repository getAll
-      When DioError
       Then return Left(GetAllTemplateError);
 )
     ''', () async {
