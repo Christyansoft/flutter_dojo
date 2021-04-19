@@ -7,4 +7,10 @@ class PeopleListStore = _PeopleListStoreBase with _$PeopleListStore;
 abstract class _PeopleListStoreBase with Store {
   @observable
   ObservableList<PeopleEntity> people = [].asObservable();
+
+  @action
+  void setListPeople(List<PeopleEntity> value) => people = value.asObservable();
+
+  @action
+  void add(PeopleEntity obj) => people.add(obj);
 }
