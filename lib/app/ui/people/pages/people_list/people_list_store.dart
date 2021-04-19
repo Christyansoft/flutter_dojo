@@ -1,0 +1,10 @@
+import 'package:flutter_dojo/app/domain/template/entities/people_entity.dart';
+import 'package:mobx/mobx.dart';
+part 'people_list_store.g.dart';
+
+class PeopleListStore = _PeopleListStoreBase with _$PeopleListStore;
+
+abstract class _PeopleListStoreBase with Store {
+  @observable
+  ObservableList<PeopleEntity> people = [].asObservable();
+}
