@@ -1,11 +1,9 @@
 import 'package:dartz/dartz.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter_dojo/app/data/template/datasources/people_datasource.dart';
 import 'package:flutter_dojo/app/data/template/models/people_model.dart';
 import 'package:flutter_dojo/app/data/template/repositories/people_repository_impl.dart';
 import 'package:flutter_dojo/app/domain/template/entities/people_entity.dart';
 import 'package:flutter_dojo/app/errors/template/template_errors.dart';
-import 'package:flutter_dojo/common/errors/failure.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 

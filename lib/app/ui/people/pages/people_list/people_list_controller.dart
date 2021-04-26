@@ -14,6 +14,7 @@ class PeopleListController {
   }
   init() async {
     var list = await _usecase.call();
+
     list.fold((Failure failure) => {}, (List<PeopleEntity> peopleList) {
       store.setListPeople(peopleList);
     });

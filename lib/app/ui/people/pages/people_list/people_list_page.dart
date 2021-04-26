@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dojo/app/ui/people/pages/people_list/people_list_controller.dart';
 import 'package:flutter_dojo/common/injected/module.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:get_it/get_it.dart';
 
-class PeopleList extends StatelessWidget {
+class PeopleListPage extends StatelessWidget {
   final _controller = getIt.get<PeopleListController>();
 
   @override
@@ -17,7 +16,7 @@ class PeopleList extends StatelessWidget {
               itemCount: _controller.store.people.length,
               itemBuilder: (BuildContext context, int index) {
                 if (_controller.store.people == null ||
-                    _controller.store.people.isNotEmpty) {
+                    _controller.store.people.isEmpty) {
                   return CircularProgressIndicator();
                 }
                 return ListTile(

@@ -6,7 +6,6 @@ import 'package:flutter_dojo/app/domain/template/repositories/people_repository.
 import 'package:flutter_dojo/app/domain/template/usecases/get_all_people_usecase_impl.dart';
 import 'package:flutter_dojo/app/domain/template/usecases/interfaces/get_all_people_usecase.dart';
 import 'package:flutter_dojo/app/errors/template/template_errors.dart';
-import 'package:flutter_dojo/common/usecase/usecase.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
