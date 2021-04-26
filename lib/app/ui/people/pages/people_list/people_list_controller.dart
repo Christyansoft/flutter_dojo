@@ -9,7 +9,9 @@ class PeopleListController {
   PeopleListController(
     this.store,
     this._usecase,
-  );
+  ) {
+    init();
+  }
   init() async {
     var list = await _usecase.call();
     list.fold((Failure failure) => {}, (List<PeopleEntity> peopleList) {
