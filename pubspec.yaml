@@ -19,6 +19,11 @@ version: 1.0.0+1
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
+scripts:
+  br_build: $runner build
+  br_watch: $clean & $get & $runner watch
+  br_build_clean: $clean & $get & $runner build --delete-conflicting-outputs
+
 
 dependencies:
   flutter:
