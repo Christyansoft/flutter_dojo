@@ -14,9 +14,23 @@ ThemeData appTheme() {
       caption: TextStyle(
         fontFamily: "Poppins",
       ),
-      headline5: TextStyle(
+      headline1: TextStyle(
+        fontSize: 72.0,
+        fontWeight: FontWeight.bold,
         fontFamily: "Poppins",
       ),
+      headline6: TextStyle(
+        fontSize: 31.0,
+        fontStyle: FontStyle.normal,
+        fontFamily: "Poppins",
+      ),
+      headline5: TextStyle(
+        fontSize: 31.0,
+        fontStyle: FontStyle.normal,
+        color: Colors.white,
+        fontFamily: "Poppins",
+      ),
+      bodyText2: TextStyle(fontSize: 14.0, fontFamily: 'Hind'),
     ),
   );
 }

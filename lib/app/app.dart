@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'ui/people/pages/people_list/people_list_page.dart';
+import 'ui/theme/app_theme.dart';
 
 class MyApp extends StatelessWidget {
   @override
@@ -9,9 +10,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       onGenerateRoute: generateRoutes,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: appTheme(),
       initialRoute: '/',
     );
   }
@@ -21,6 +20,5 @@ Route generateRoutes(RouteSettings settings) {
   switch (settings.name) {
     case '/':
       return MaterialPageRoute(builder: (_) => PeopleListPage());
-
   }
 }
