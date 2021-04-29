@@ -9,16 +9,27 @@ class PeopleListPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    final fillStop = 360 / size.height;
+    final colors = [primaryColor, primaryColor, accentColor, accentColor];
+    final stops = [0.0, fillStop, fillStop, 1.0];
     return Scaffold(
       body: Container(
+        height: size.height,
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          stops: stops,
+          colors: colors,
+        )),
         child: Observer(
           builder: (_) {
             return ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: _controller.store.people.length,
               itemBuilder: (BuildContext context, int index) {
-                if (_controller.store.people == null ||
-                    _controller.store.people.isEmpty) {
+                if (_controller.store.people == null || _controller.store.people.isEmpty) {
                   return CircularProgressIndicator();
                 }
 
