@@ -28,14 +28,31 @@ class PeopleListPage extends StatelessWidget {
           padding: const EdgeInsets.only(left: 23),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
                 padding: EdgeInsets.only(top: 50),
-                child: SvgPicture.asset('assets/images/logo_black.svg'),
+                child: Center(
+                    child: SvgPicture.asset('assets/images/logo_black.svg')),
               ),
               Text(
-                'Movies',
+                'Characters',
+                style: Theme.of(context).textTheme.headline6,
+              ),
+              Container(
+                width: 150.0,
+                child: Divider(
+                  thickness: 1,
+                  color: Theme.of(context).dividerColor,
+                ),
+              ),
+              Container(
+                width: 200.0,
+                transform: Matrix4.translationValues(0.0, -10.0, 0.0),
+                child: Divider(
+                  thickness: 1,
+                  color: Theme.of(context).dividerColor,
+                ),
               ),
               Container(
                 height: size.height * 0.3,

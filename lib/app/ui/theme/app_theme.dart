@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 const brightness = Brightness.light;
 const primaryColor = Colors.amber;
 const accentColor = const Color(0xFF000029);
+const dividerColor = Colors.black;
 
 ThemeData appTheme() {
   return ThemeData(
