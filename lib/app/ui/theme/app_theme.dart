@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 const brightness = Brightness.light;
-const primaryColor = const Color(0xFFfa4d73);
-const accentColor = const Color(0xFF000000);
+const primaryColor = Colors.amber;
+const accentColor = const Color(0xFF000029);
 
 ThemeData appTheme() {
   return ThemeData(
