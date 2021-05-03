@@ -24,59 +24,64 @@ class PeopleListPage extends StatelessWidget {
           stops: stops,
           colors: colors,
         )),
-        child: Padding(
-          padding: const EdgeInsets.only(left: 23),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: EdgeInsets.only(top: 50),
-                child: Center(
-                    child: SvgPicture.asset('assets/images/logo_black.svg')),
-              ),
-              Text(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(top: 50),
+              child: Center(
+                  child: SvgPicture.asset('assets/images/logo_black.svg')),
+            ),
+            Container(
+                margin: EdgeInsets.only(left: 16),
+              child: Text(
                 'Characters',
                 style: Theme.of(context).textTheme.headline6,
               ),
-              Container(
-                width: 150.0,
-                child: Divider(
-                  thickness: 1,
-                  color: Theme.of(context).dividerColor,
-                ),
+            ),
+            Container(
+              width: 150.0,
+              margin: EdgeInsets.only(left: 16),
+              child: Divider(
+                thickness: 1,
+                color: Theme.of(context).dividerColor,
               ),
-              Container(
-                width: 200.0,
-                transform: Matrix4.translationValues(0.0, -10.0, 0.0),
-                child: Divider(
-                  thickness: 1,
-                  color: Theme.of(context).dividerColor,
-                ),
+            ),
+            Container(
+              width: 200.0,
+              margin: EdgeInsets.only(left: 16),
+              transform: Matrix4.translationValues(0.0, -10.0, 0.0),
+              child: Divider(
+                thickness: 1,
+                color: Theme.of(context).dividerColor,
               ),
-              Container(
-                height: size.height * 0.3,
-                child: Observer(
-                  builder: (_) {
-                    return ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: _controller.store.people.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        if (_controller.store.people == null ||
-                            _controller.store.people.isEmpty) {
-                          return CircularProgressIndicator();
-                        }
+            ),
+            Container(
+              height: size.height * 0.3,
+              child: Observer(
+                builder: (_) {
+                  return ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: _controller.store.people.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      if (_controller.store.people == null ||
+                          _controller.store.people.isEmpty) {
+                        return CircularProgressIndicator();
+                      }
 
-                        var people = _controller.store.people[index];
+                      var people = _controller.store.people[index];
 
-                        return Column(
+                      return Container(
+                        margin: EdgeInsets.only(left: 16, right: 16),
+                        child: Column(
                           mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             SizedBox(
                               width: 150,
                               height: size.height * 0.27,
                               child: Card(
-                                margin: EdgeInsets.all(20),
                                 child: Image.network(
                                   'https://starwars-visualguide.com/assets/img/characters/1.jpg',
                                   fit: BoxFit.cover,
@@ -91,14 +96,14 @@ class PeopleListPage extends StatelessWidget {
                               ),
                             )
                           ],
-                        );
-                      },
-                    );
-                  },
-                ),
+                        ),
+                      );
+                    },
+                  );
+                },
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
