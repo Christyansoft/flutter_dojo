@@ -8,6 +8,7 @@ const dividerColor = Color(0xFF707070);
 ThemeData appTheme() {
   return ThemeData(
     brightness: brightness,
+    dividerColor: dividerColor,
     textTheme: new TextTheme(
       button: TextStyle(
         fontFamily: "Poppins",
@@ -32,7 +33,6 @@ ThemeData appTheme() {
         fontFamily: "Poppins",
       ),
       bodyText2: TextStyle(fontSize: 14.0, fontFamily: 'Hind'),
-      
     ),
   );
 }

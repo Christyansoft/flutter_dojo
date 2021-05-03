@@ -46,7 +46,6 @@ class PeopleListPage extends StatelessWidget {
               margin: EdgeInsets.only(left: 16),
               child: Divider(
                 thickness: 1,
-                color: dividerColor,
               ),
             ),
             Container(
@@ -55,7 +54,6 @@ class PeopleListPage extends StatelessWidget {
               transform: Matrix4.translationValues(0.0, -20.0, 0.0),
               child: Divider(
                 thickness: 1,
-                color: dividerColor,
               ),
             ),
             Container(
