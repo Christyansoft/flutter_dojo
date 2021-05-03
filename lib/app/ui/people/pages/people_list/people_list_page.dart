@@ -97,6 +97,7 @@ class PeopleListPage extends StatelessWidget {
                               people.name,
                               style: TextStyle(
                                 color: Colors.white,
+                                fontWeight: FontWeight.bold
                               ),
                             )
                           ],
