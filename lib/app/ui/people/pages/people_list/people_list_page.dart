@@ -42,21 +42,24 @@ class PeopleListPage extends StatelessWidget {
             ),
             Container(
               width: 150.0,
-              transform: Matrix4.translationValues(0.0, -10.0, 0.0),
-              margin: EdgeInsets.only(left: 16),
+              transform: Matrix4.translationValues(0.0, -5.0, 0.0),
+              margin: EdgeInsets.only(left: 16, top: 2),
               child: Divider(
+                 height: 1,
                 thickness: 1,
               ),
             ),
             Container(
               width: 200.0,
               margin: EdgeInsets.only(left: 16),
-              transform: Matrix4.translationValues(0.0, -20.0, 0.0),
+              transform: Matrix4.translationValues(0.0, -10.0, 0.0),
               child: Divider(
+                height: 1,
                 thickness: 1,
               ),
             ),
             Container(
+              margin: EdgeInsets.only(top: 5),
               height: size.height * 0.3,
               child: Observer(
                 builder: (_) {
