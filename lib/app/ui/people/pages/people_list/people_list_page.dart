@@ -30,11 +30,10 @@ class PeopleListPage extends StatelessWidget {
           children: [
             Padding(
               padding: EdgeInsets.only(top: 50),
-              child: Center(
-                  child: SvgPicture.asset('assets/images/logo_black.svg')),
+              child: Center(child: SvgPicture.asset('assets/images/logo_black.svg')),
             ),
             Container(
-                margin: EdgeInsets.only(left: 16),
+              margin: EdgeInsets.only(left: 16),
               child: Text(
                 'Characters',
                 style: Theme.of(context).textTheme.headline6,
@@ -62,30 +61,36 @@ class PeopleListPage extends StatelessWidget {
               child: Observer(
                 builder: (_) {
                   return ListView.builder(
+                    padding: EdgeInsets.symmetric(horizontal: 6),
                     scrollDirection: Axis.horizontal,
                     itemCount: _controller.store.people.length,
                     itemBuilder: (BuildContext context, int index) {
-                      if (_controller.store.people == null ||
-                          _controller.store.people.isEmpty) {
+                      if (_controller.store.people == null || _controller.store.people.isEmpty) {
                         return CircularProgressIndicator();
                       }
 
                       var people = _controller.store.people[index];
 
                       return Container(
-                        margin: EdgeInsets.only(left: 16, right: 16),
+                        margin: EdgeInsets.symmetric(horizontal: 6),
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             SizedBox(
-                              width: 150,
-                              height: size.height * 0.27,
+                              width: size.width * 0.34,
+                              height: size.height * 0.21,
                               child: Card(
-                                child: Image.network(
-                                  'https://starwars-visualguide.com/assets/img/characters/1.jpg',
-                                  fit: BoxFit.cover,
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(20),
+                                  child: Image.network(
+                                   'https://starwars-visualguide.com/assets/img/characters/1.jpg',
+                                  ),
                                 ),
+                                // child: Image.network(
+                                //   'https://starwars-visualguide.com/assets/img/characters/1.jpg',
+                                //   fit: BoxFit.fill,
+                                // ),
                                 color: primaryColor,
                               ),
                             ),
