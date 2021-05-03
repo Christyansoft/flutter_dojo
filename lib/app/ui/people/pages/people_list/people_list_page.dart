@@ -30,7 +30,8 @@ class PeopleListPage extends StatelessWidget {
           children: [
             Padding(
               padding: EdgeInsets.only(top: 50),
-              child: Center(child: SvgPicture.asset('assets/images/logo_black.svg')),
+              child: Center(
+                  child: SvgPicture.asset('assets/images/logo_black.svg')),
             ),
             Container(
               margin: EdgeInsets.only(left: 16),
@@ -41,19 +42,20 @@ class PeopleListPage extends StatelessWidget {
             ),
             Container(
               width: 150.0,
+              transform: Matrix4.translationValues(0.0, -10.0, 0.0),
               margin: EdgeInsets.only(left: 16),
               child: Divider(
                 thickness: 1,
-                color: Theme.of(context).dividerColor,
+                color: dividerColor,
               ),
             ),
             Container(
               width: 200.0,
               margin: EdgeInsets.only(left: 16),
-              transform: Matrix4.translationValues(0.0, -10.0, 0.0),
+              transform: Matrix4.translationValues(0.0, -20.0, 0.0),
               child: Divider(
                 thickness: 1,
-                color: Theme.of(context).dividerColor,
+                color: dividerColor,
               ),
             ),
             Container(
@@ -65,7 +67,8 @@ class PeopleListPage extends StatelessWidget {
                     scrollDirection: Axis.horizontal,
                     itemCount: _controller.store.people.length,
                     itemBuilder: (BuildContext context, int index) {
-                      if (_controller.store.people == null || _controller.store.people.isEmpty) {
+                      if (_controller.store.people == null ||
+                          _controller.store.people.isEmpty) {
                         return CircularProgressIndicator();
                       }
 
@@ -84,14 +87,12 @@ class PeopleListPage extends StatelessWidget {
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(20),
                                   child: Image.network(
-                                   'https://starwars-visualguide.com/assets/img/characters/1.jpg',
+                                    'https://starwars-visualguide.com/assets/img/characters/1.jpg',
+                                    fit: BoxFit.fill,
                                   ),
                                 ),
-                                // child: Image.network(
-                                //   'https://starwars-visualguide.com/assets/img/characters/1.jpg',
-                                //   fit: BoxFit.fill,
-                                // ),
-                                color: primaryColor,
+                                color: Colors.transparent,
+                                elevation: 0,
                               ),
                             ),
                             Text(

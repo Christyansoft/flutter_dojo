@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 const brightness = Brightness.light;
 const primaryColor = Colors.amber;
 const accentColor = const Color(0xFF000029);
-const dividerColor = Colors.black;
+const dividerColor = Color(0xFF707070);
 
 ThemeData appTheme() {
   return ThemeData(
@@ -32,6 +32,7 @@ ThemeData appTheme() {
         fontFamily: "Poppins",
       ),
       bodyText2: TextStyle(fontSize: 14.0, fontFamily: 'Hind'),
+      
     ),
   );
 }
