@@ -30,8 +30,7 @@ class PeopleListPage extends StatelessWidget {
           children: [
             Padding(
               padding: EdgeInsets.only(top: 50),
-              child: Center(
-                  child: SvgPicture.asset('assets/images/logo_black.svg')),
+              child: Center(child: SvgPicture.asset('assets/images/logo_black.svg')),
             ),
             Container(
               margin: EdgeInsets.only(left: 16),
@@ -68,8 +67,7 @@ class PeopleListPage extends StatelessWidget {
                     scrollDirection: Axis.horizontal,
                     itemCount: _controller.store.people.length,
                     itemBuilder: (BuildContext context, int index) {
-                      if (_controller.store.people == null ||
-                          _controller.store.people.isEmpty) {
+                      if (_controller.store.people == null || _controller.store.people.isEmpty) {
                         return CircularProgressIndicator();
                       }
 
@@ -94,11 +92,12 @@ class PeopleListPage extends StatelessWidget {
                                 ),
                               ),
                             ),
+                            SizedBox(
+                              height: 5,
+                            ),
                             Text(
                               people.name,
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold),
+                              style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
                             )
                           ],
                         ),
@@ -114,8 +113,38 @@ class PeopleListPage extends StatelessWidget {
       bottomNavigationBar: Container(
         height: size.height * 0.13,
         child: BottomNavigationBar(
-            backgroundColor: Theme.of(context).primaryColor,
-            selectedItemColor: Theme.of(context).accentColor),
+          backgroundColor: Theme.of(context).primaryColor,
+          selectedItemColor: Theme.of(context).accentColor,
+          items: [
+            BottomNavigationBarItem(
+              label: 'Home',
+              icon: Container(
+                margin: EdgeInsets.only(bottom: 10),
+                width: 20,
+                height: 20,
+                child: SvgPicture.asset("assets/images/home.svg"),
+              ),
+            ),
+            BottomNavigationBarItem(
+              label: 'Characteres',
+              icon: Container(
+                margin: EdgeInsets.only(bottom: 5),
+                width: 32,
+                height: 32,
+                child: SvgPicture.asset("assets/images/people.svg"),
+              ),
+            ),
+            BottomNavigationBarItem(
+              label: 'Movies',
+              icon: Container(
+                margin: EdgeInsets.only(bottom: 5),
+                width: 32,
+                height: 32,
+                child: SvgPicture.asset("assets/images/films.svg"),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
