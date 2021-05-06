@@ -1,9 +1,9 @@
 import 'package:flutter_dojo/app/domain/template/entities/people_entity.dart';
 import 'package:mobx/mobx.dart';
 
-import '../../../../domain/template/entities/people_entity.dart';
+import '../../../../../domain/template/entities/people_entity.dart';
 
-part 'people_list_store.g.dart';
+part '../people_list_store.g.dart';
 
 class PeopleListStore = _PeopleListStoreBase with _$PeopleListStore;
 

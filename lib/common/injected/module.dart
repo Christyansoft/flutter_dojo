@@ -6,8 +6,8 @@ import 'package:flutter_dojo/app/data/template/repositories/people_repository_im
 import 'package:flutter_dojo/app/domain/template/repositories/people_repository.dart';
 import 'package:flutter_dojo/app/domain/template/usecases/get_all_people_usecase_impl.dart';
 import 'package:flutter_dojo/app/domain/template/usecases/interfaces/get_all_people_usecase.dart';
-import 'package:flutter_dojo/app/ui/people/pages/people_list/people_list_controller.dart';
-import 'package:flutter_dojo/app/ui/people/pages/people_list/people_list_store.dart';
+import 'package:flutter_dojo/app/ui/people/pages/home/home_controller.dart';
+import 'package:flutter_dojo/app/ui/people/pages/home/stores/people_list_store.dart';
 import 'package:get_it/get_it.dart';
 
 final GetIt getIt = GetIt.instance;
@@ -17,16 +17,17 @@ Future<void> configureInjection() async {
         baseUrl: 'https://swapi.dev/api/',
       )));
 
-  getIt.registerLazySingleton<GetAllPeopleUseCase>(
-      () => GetAllPeopleUseCaseImpl(getIt()));
+  getIt.registerLazySingleton<GetAllPeopleUseCase>(() => GetAllPeopleUseCaseImpl(getIt()));
 
-  getIt.registerLazySingleton<PeopleRepository>(
-      () => PeopleRepositoryImpl(getIt()));
+  getIt.registerLazySingleton<PeopleRepository>(() => PeopleRepositoryImpl(getIt()));
 
-  getIt.registerLazySingleton<PeopleDataSource>(
-      () => PeopleDataSourceApi(getIt()));
+  getIt.registerLazySingleton<PeopleDataSource>(() => PeopleDataSourceApi(getIt()));
 
   getIt.registerLazySingleton(() => PeopleListStore());
-  getIt.registerLazySingleton(() => PeopleListController(
-      getIt<PeopleListStore>(), getIt<GetAllPeopleUseCase>()));
+  getIt.registerLazySingleton(
+    () => HomeController(
+      getIt<PeopleListStore>(),
+      getIt<GetAllPeopleUseCase>(),
+    ),
+  );
 }

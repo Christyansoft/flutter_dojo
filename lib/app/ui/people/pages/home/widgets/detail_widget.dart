@@ -7,15 +7,16 @@ class DetailWidget extends StatelessWidget {
 
   const DetailWidget({
     Key key,
-    this.title,
-    this.description,
-    this.imageURL,
+    @required this.title,
+    @required this.description,
+    @required this.imageURL,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.red,
+      color: Colors.white,
+      child: Text(title),
     );
   }
 }

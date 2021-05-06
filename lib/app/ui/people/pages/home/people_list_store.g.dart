@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'people_list_store.dart';
+part of 'stores/people_list_store.dart';
 
 // **************************************************************************
 // StoreGenerator
