@@ -82,7 +82,9 @@ class PeopleListPage extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             GestureDetector(
-                              onTap: _controller._onTapModalSheet,
+                              onTap: () {
+                                _controller.onTapModalSheet(context);
+                              },
                               child: SizedBox(
                                 height: size.height * 0.23,
                                 child: ClipRRect(
