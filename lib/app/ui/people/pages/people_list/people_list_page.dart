@@ -11,7 +11,7 @@ class PeopleListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final fillStop = 360 / size.height;
+    final fillStop = 300 / size.height;
     final colors = [primaryColor, primaryColor, accentColor, accentColor];
     final stops = [0.0, fillStop, fillStop, 1.0];
     return Scaffold(
@@ -45,7 +45,7 @@ class PeopleListPage extends StatelessWidget {
               transform: Matrix4.translationValues(0.0, -5.0, 0.0),
               margin: EdgeInsets.only(left: 16, top: 2),
               child: Divider(
-                 height: 1,
+                height: 1,
                 thickness: 1,
               ),
             ),
@@ -81,27 +81,24 @@ class PeopleListPage extends StatelessWidget {
                           mainAxisSize: MainAxisSize.min,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            SizedBox(
-                              width: size.width * 0.34,
-                              height: size.height * 0.21,
-                              child: Card(
+                            GestureDetector(
+                              child: SizedBox(
+                                width: size.width * 0.34,
+                                height: size.height * 0.23,
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(20),
                                   child: Image.network(
-                                    'https://starwars-visualguide.com/assets/img/characters/1.jpg',
+                                    'https://starwars-visualguide.com/assets/img/characters/${index + 1}.jpg',
                                     fit: BoxFit.fill,
                                   ),
                                 ),
-                                color: Colors.transparent,
-                                elevation: 0,
                               ),
                             ),
                             Text(
                               people.name,
                               style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold
-                              ),
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold),
                             )
                           ],
                         ),
@@ -113,6 +110,12 @@ class PeopleListPage extends StatelessWidget {
             ),
           ],
         ),
+      ),
+      bottomNavigationBar: Container(
+        height: size.height * 0.13,
+        child: BottomNavigationBar(
+            backgroundColor: Theme.of(context).primaryColor,
+            selectedItemColor: Theme.of(context).accentColor),
       ),
     );
   }

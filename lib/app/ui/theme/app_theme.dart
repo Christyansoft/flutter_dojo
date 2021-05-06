@@ -9,6 +9,8 @@ ThemeData appTheme() {
   return ThemeData(
     brightness: brightness,
     dividerColor: dividerColor,
+    accentColor: accentColor,
+    primaryColor: primaryColor,
     textTheme: new TextTheme(
       button: TextStyle(
         fontFamily: "Poppins",
