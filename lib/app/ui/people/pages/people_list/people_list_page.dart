@@ -11,7 +11,7 @@ class PeopleListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final fillStop = 300 / size.height;
+    final fillStop = 0.46;
     final colors = [primaryColor, primaryColor, accentColor, accentColor];
     final stops = [0.0, fillStop, fillStop, 1.0];
     return Scaffold(
@@ -81,7 +81,6 @@ class PeopleListPage extends StatelessWidget {
                           children: [
                             GestureDetector(
                               child: SizedBox(
-                                width: size.width * 0.34,
                                 height: size.height * 0.23,
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(20),
