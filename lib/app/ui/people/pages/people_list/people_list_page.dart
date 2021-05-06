@@ -30,7 +30,8 @@ class PeopleListPage extends StatelessWidget {
           children: [
             Padding(
               padding: EdgeInsets.only(top: 50),
-              child: Center(child: SvgPicture.asset('assets/images/logo_black.svg')),
+              child: Center(
+                  child: SvgPicture.asset('assets/images/logo_black.svg')),
             ),
             Container(
               margin: EdgeInsets.only(left: 16),
@@ -67,7 +68,8 @@ class PeopleListPage extends StatelessWidget {
                     scrollDirection: Axis.horizontal,
                     itemCount: _controller.store.people.length,
                     itemBuilder: (BuildContext context, int index) {
-                      if (_controller.store.people == null || _controller.store.people.isEmpty) {
+                      if (_controller.store.people == null ||
+                          _controller.store.people.isEmpty) {
                         return CircularProgressIndicator();
                       }
 
@@ -80,6 +82,7 @@ class PeopleListPage extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             GestureDetector(
+                              onTap: _controller._onTapModalSheet,
                               child: SizedBox(
                                 height: size.height * 0.23,
                                 child: ClipRRect(
@@ -96,7 +99,9 @@ class PeopleListPage extends StatelessWidget {
                             ),
                             Text(
                               people.name,
-                              style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold),
                             )
                           ],
                         ),
@@ -114,6 +119,7 @@ class PeopleListPage extends StatelessWidget {
         child: BottomNavigationBar(
           backgroundColor: Theme.of(context).primaryColor,
           selectedItemColor: Theme.of(context).accentColor,
+          unselectedItemColor: Theme.of(context).disabledColor,
           items: [
             BottomNavigationBarItem(
               label: 'Home',

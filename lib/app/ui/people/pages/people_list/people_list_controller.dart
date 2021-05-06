@@ -19,4 +19,7 @@ class PeopleListController {
       store.setListPeople(peopleList);
     });
   }
+
+  void _onTapModalSheet() {
+  }
 }
