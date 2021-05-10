@@ -15,8 +15,23 @@ class DetailWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
-      child: Text(title),
+      padding: EdgeInsets.symmetric(horizontal: 25, vertical: 30),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            color: Colors.white,
+            child: Text(
+              title,
+              style: TextStyle(
+                fontSize: 20,
+                fontFamily: 'Poppins',
+              ),
+            ),
+          ),
+          SizedBox(height: 10,)
+        ],
+      ),
     );
   }
 }

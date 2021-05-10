@@ -34,7 +34,7 @@ class HomeController {
         return DetailWidget(
           title: people.name,
           description: '',
-          imageURL: '',
+          imageURL: people.urlImage,
         );
       },
     );
