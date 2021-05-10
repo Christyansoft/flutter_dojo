@@ -17,10 +17,15 @@ class PeopleEntity extends Equatable {
   @override
   List<Object> get props => [url, name, mass, height];
 
-  String get urlImage{
-
-    final urlSplit = this.url.split('/',);
-     final index = urlSplit[urlSplit.length - 2];
+  String get urlImage {
+    final urlSplit = this.url.split(
+          '/',
+        );
+    final index = urlSplit[urlSplit.length - 2];
     return 'https://starwars-visualguide.com/assets/img/characters/$index.jpg';
-  } 
+  }
+
+  String get complements {
+    return 'Massa: $mass\nAltura: $height';
+  }
 }

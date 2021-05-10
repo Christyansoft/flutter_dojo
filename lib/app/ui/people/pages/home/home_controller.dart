@@ -24,6 +24,8 @@ class HomeController {
   }
 
   void onTapModalSheet(BuildContext context, PeopleEntity people) {
+    
+    
     showModalBottomSheet(
       context: context,
       shape: RoundedRectangleBorder(
@@ -33,8 +35,8 @@ class HomeController {
       builder: (context) {
         return DetailWidget(
           title: people.name,
-          description: '',
           imageURL: people.urlImage,
+          complements: Container(),
         );
       },
     );

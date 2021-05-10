@@ -106,8 +106,9 @@ class HomePage extends StatelessWidget {
                             Text(
                               person.name,
                               style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold),
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
                             )
                           ],
                         ),

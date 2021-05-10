@@ -4,12 +4,14 @@ class DetailWidget extends StatelessWidget {
   final String title;
   final String description;
   final String imageURL;
+  final Widget complements;
 
   const DetailWidget({
     Key key,
     @required this.title,
-    @required this.description,
     @required this.imageURL,
+    @required this.complements,
+    this.description,
   }) : super(key: key);
 
   @override
