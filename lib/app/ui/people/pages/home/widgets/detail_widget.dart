@@ -14,6 +14,7 @@ class DetailWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 25, vertical: 30),
       child: Column(
@@ -29,7 +30,22 @@ class DetailWidget extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 10,)
+          SizedBox(
+            height: 10,
+          ),
+          SizedBox(
+            height: size.height * 0.23,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: Hero(
+                tag: imageURL,
+                child: Image.network(
+                  imageURL,
+                  fit: BoxFit.fill,
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );

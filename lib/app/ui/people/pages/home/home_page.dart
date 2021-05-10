@@ -74,8 +74,8 @@ class HomePage extends StatelessWidget {
                         return CircularProgressIndicator();
                       }
 
-                      var people = _controller.store.people[index];
-                      
+                      var person = _controller.store.people[index];
+
                       return Container(
                         margin: EdgeInsets.symmetric(horizontal: 6),
                         child: Column(
@@ -84,15 +84,18 @@ class HomePage extends StatelessWidget {
                           children: [
                             GestureDetector(
                               onTap: () {
-                                _controller.onTapModalSheet(context, people);
+                                _controller.onTapModalSheet(context, person);
                               },
                               child: SizedBox(
                                 height: size.height * 0.23,
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(20),
-                                  child: Image.network(
-                                   people.urlImage,
-                                    fit: BoxFit.fill,
+                                  child: Hero(
+                                    tag: person.urlImage,
+                                    child: Image.network(
+                                      person.urlImage,
+                                      fit: BoxFit.fill,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -101,7 +104,7 @@ class HomePage extends StatelessWidget {
                               height: 5,
                             ),
                             Text(
-                              people.name,
+                              person.name,
                               style: TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold),
