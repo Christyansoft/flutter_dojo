@@ -91,7 +91,7 @@ class HomePage extends StatelessWidget {
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(20),
                                   child: Image.network(
-                                    'https://starwars-visualguide.com/assets/img/characters/${index + 1}.jpg',
+                                   people.urlImage,
                                     fit: BoxFit.fill,
                                   ),
                                 ),
