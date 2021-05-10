@@ -23,7 +23,7 @@ class HomeController {
     });
   }
 
-  void onTapModalSheet(BuildContext context) {
+  void onTapModalSheet(BuildContext context, PeopleEntity people) {
     showModalBottomSheet(
       context: context,
       shape: RoundedRectangleBorder(
@@ -32,7 +32,7 @@ class HomeController {
       clipBehavior: Clip.antiAliasWithSaveLayer,
       builder: (context) {
         return DetailWidget(
-          title: '',
+          title: people.name,
           description: '',
           imageURL: '',
         );

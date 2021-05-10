@@ -75,7 +75,7 @@ class HomePage extends StatelessWidget {
                       }
 
                       var people = _controller.store.people[index];
-
+                      
                       return Container(
                         margin: EdgeInsets.symmetric(horizontal: 6),
                         child: Column(
@@ -84,7 +84,7 @@ class HomePage extends StatelessWidget {
                           children: [
                             GestureDetector(
                               onTap: () {
-                                _controller.onTapModalSheet(context);
+                                _controller.onTapModalSheet(context, people);
                               },
                               child: SizedBox(
                                 height: size.height * 0.23,
