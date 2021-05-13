@@ -44,6 +44,7 @@ flutter_native_splash:
   image: assets/images/logo.png
   color: "#000029"
   ios_content_mode: scaleAspectFit
+  android_gravity: center
 
 dev_dependencies:
   flutter_test:
