@@ -35,18 +35,27 @@ class DetailWidget extends StatelessWidget {
           SizedBox(
             height: 10,
           ),
-          SizedBox(
-            height: size.height * 0.23,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(20),
-              child: Hero(
-                tag: imageURL,
-                child: Image.network(
-                  imageURL,
-                  fit: BoxFit.fill,
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              SizedBox(
+                height: size.height * 0.23,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: Hero(
+                    tag: imageURL,
+                    child: Image.network(
+                      imageURL,
+                      fit: BoxFit.fill,
+                    ),
+                  ),
                 ),
               ),
-            ),
+              Container(
+                margin: EdgeInsets.only(left: 10),
+                child: complements,
+              )
+            ],
           ),
         ],
       ),
